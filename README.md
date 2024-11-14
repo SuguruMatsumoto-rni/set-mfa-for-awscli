@@ -13,7 +13,16 @@ AWS CLIで一時的な認証情報を取得し、MFA認証を行うためのシ�
 1. スクリプトの保存
 ```bash
 # スクリプトを任意の場所に保存（例: ~/aws-mfa.sh）
-curl -o ~/aws-mfa.sh https://github.com/SuguruMatsumoto-rni/set-mfa-for-awscli/aws-mfa.sh
+curl -o ~/aws-mfa.sh https://raw.githubusercontent.com/SuguruMatsumoto-rni/set-mfa-for-awscli/main/aws-mfa.sh
+
+# 実行権限を付与
+chmod +x ~/aws-mfa.sh
+
+# エイリアスを設定（zshの場合）
+echo 'alias aws-mfa="~/aws-mfa.sh"' >> ~/.zshrc
+
+# 設定を反映
+source ~/.zshrc
 # または上記のスクリプトをコピーして保存
 
 # 実行権限を付与
