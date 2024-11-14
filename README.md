@@ -13,7 +13,7 @@ AWS CLIで一時的な認証情報を取得し、MFA認証を行うためのシ�
 1. スクリプトの保存
 ```bash
 # スクリプトを任意の場所に保存（例: ~/aws-mfa.sh）
-curl -o ~/aws-mfa.sh https://raw.githubusercontent.com/your-repo/aws-mfa.sh
+curl -o ~/aws-mfa.sh https://github.com/SuguruMatsumoto-rni/set-mfa-for-awscli/aws-mfa.sh
 # または上記のスクリプトをコピーして保存
 
 # 実行権限を付与
@@ -41,22 +41,22 @@ aws-mfa
 ```
 
 2. 対話形式での入力
-- プロファイルの選択（例: receipt-stg-user）
+- プロファイルの選択（例: aws-stg-user）
 - MFAデバイスの選択
 - MFAコードの入力（6桁）
 - 確認後に実行
 
 3. 作成されるプロファイル
 - 元のプロファイル名に `-mfa` が付加されます
-- 例: `receipt-stg-user` → `receipt-stg-user-mfa`
+- 例: `aws-stg-user` → `aws-stg-user-mfa`
 
 4. 認証後のAWS CLIコマンド実行
 ```bash
 # プロファイルを指定して実行
-aws s3 ls --profile receipt-stg-user-mfa
+aws s3 ls --profile aws-stg-user-mfa
 
 # または環境変数として設定
-export AWS_PROFILE=receipt-stg-user-mfa
+export AWS_PROFILE=aws-stg-user-mfa
 aws s3 ls
 ```
 
@@ -106,20 +106,20 @@ $ aws-mfa
 
 利用可能なプロファイル:
 1) default
-2) receipt-stg-user
+2) aws-stg-user
 プロファイルを選択してください (番号): 2
 
 MFAデバイスを取得中...
 MFAデバイスを選択してください:
-1) arn:aws:iam::123456789012:mfa/chrome_auth
+1) arn:aws:iam::123456789012:mfa/mfa_auth
 MFAデバイスを選択してください (番号): 1
 
 MFAコードを入力 (6桁): 123456
 
 === 設定内容 ===
-元のプロファイル: receipt-stg-user
-MFAセッション用プロファイル: receipt-stg-user-mfa
-MFAデバイス: arn:aws:iam::123456789012:mfa/chrome_auth
+元のプロファイル: aws-stg-user
+MFAセッション用プロファイル: aws-stg-user-mfa
+MFAデバイス: arn:aws:iam::123456789012:mfa/mfa_auth
 リージョン: ap-northeast-1
 
 処理を続行しますか？ (Y/n): y
